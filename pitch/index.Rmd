@@ -1,0 +1,52 @@
+---
+title       : Exploring Iris Dataset and Predicting Species
+subtitle    : 
+author      : 
+job         : 
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+---
+
+## Iris Dataset Exploration Tool - Intro
+
+This presentation is created for the course project of the developing data products course and showcase the usage of these two tools:
+
+1. `shiny` to create an interactive explorer for Iris dataset
+2. `slidify` to create this presentation
+
+--- .class #id 
+
+## Application
+
+The application allows the user to:
+1. Explore the dataset by looking at the relationship between two Iris characteristics (Sepal.Length,Sepal.Width,Petal.Length,Petal.Width) on a graph.
+2. Input values to predict Iris species using regression trees
+
+The application is hosted at https://adion.shinyapps.io/devdataprod and the source code can be found at https://github.com/aldion/devdataprod
+
+--- .class #id 
+
+## Screenshot
+
+
+![screenshot](./assets/img/iris.png)
+
+--- .class #id 
+
+
+## Prediction
+
+Prediction model is done using recursive partionning and regression trees :
+```{r warning=FALSE,message=FALSE}
+library(caret)
+modFit <- train(Species ~ ., method="rpart", data=iris)
+print(modFit$finalModel)
+```
+ 
+```{r results="hide"}
+predict(modFit,data.frame(Sepal.Length,Sepal.Width,Petal.Length,Petal.Width))
+```
