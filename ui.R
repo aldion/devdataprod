@@ -15,14 +15,13 @@ shinyUI(pageWithSidebar(
     sliderInput('pw', 'Petal.Width', 1.5, min = 0, max= 3, step = 0.1),
     sliderInput('pl', 'Petal.Length', 4, min = 1, max= 8, step = 0.1),
     sliderInput('sw', 'Sepal.Width', 2.5, min = 1, max= 5, step = 0.1),
-    sliderInput('sl', 'Sepal.Length', 4, min = 1, max= 8, step = 0.1),
-    
-    #tags$h3("Documentation"),
-    tags$p("Use drop down to explore the data set or the solders to predict species")
-    #"Code ",
-    #tags$a(href="https://github.com/", "on github")
+    sliderInput('sl', 'Sepal.Length', 4, min = 1, max= 8, step = 0.1)
   ),
   mainPanel(
+    tags$p("Exploration: use drop downs and pick two different iris features to explore the relationship between the features and the species classification"),
+    tags$p("Prediction: use sliders to set the 4 characteristics, the predicted species will be printed on the bottom."),
+    
+    
     # fix me
     plotOutput('plot'),
     
